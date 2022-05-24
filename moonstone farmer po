@@ -1,0 +1,225 @@
+
+repeat wait() until game:IsLoaded()
+repeat wait() until game:GetService('Players').LocalPlayer
+repeat wait() until game:GetService('Players').LocalPlayer.Character
+repeat wait() until game:GetService('Players').LocalPlayer.Character:WaitForChild('HumanoidRootPart')
+repeat wait() until game:GetService("ReplicatedStorage"):WaitForChild('Communication'):WaitForChild('Events')
+
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+	game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+end)	
+
+--GUI
+
+local blitzygui = Instance.new("ScreenGui")
+local Top = Instance.new("ImageLabel")
+local Title = Instance.new("TextLabel")
+local Bottom = Instance.new("ImageLabel")
+local horseinfo = Instance.new("TextLabel")
+local timeinfo = Instance.new("TextLabel")
+
+blitzygui.Name = "blitzygui"
+blitzygui.Parent = game:WaitForChild("CoreGui")
+
+Top.Name = "Top"
+Top.Parent = blitzygui
+Top.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Top.BackgroundTransparency = 1.000
+Top.Position = UDim2.new(-0.00990098994, 0, 0.262576699, 0)
+Title.ZIndex = 13
+Top.Size = UDim2.new(0, 244, 0, 52)
+Top.Image = "rbxassetid://3570695787"
+Top.ImageColor3 = Color3.fromRGB(12, 12, 12)
+Top.ScaleType = Enum.ScaleType.Slice
+Top.SliceCenter = Rect.new(100, 100, 100, 100)
+Top.SliceScale = 0.120
+
+Title.Name = "Title"
+Title.Parent = Top
+Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Title.BackgroundTransparency = 1.000
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(0.0532786883, 0, -0.00402509235, 0)
+Title.Size = UDim2.new(0, 231, 0, 26)
+Title.ZIndex = 13
+Title.Font = Enum.Font.SciFi
+Title.Text = "Status: N/A"
+Title.TextColor3 = Color3.fromRGB(243, 240, 243)
+Title.TextSize = 20.000
+Title.TextXAlignment = Enum.TextXAlignment.Left
+
+Title.Text = "Status: N/A"
+
+
+
+-- GUI
+
+wait(1)
+
+local char = game:GetService('Players').LocalPlayer.Character
+
+Title.Text = "Status: Loading Lunar..."
+for i,v in pairs(game:GetService("Workspace").Islands:GetChildren()) do
+	if game:GetService('Players').LocalPlayer.Character.Parent.Name ~= v.Name:match('Lunar') then
+		if v.Name:match('Lunar') then
+			for _,remote in pairs(game:GetService("ReplicatedStorage").Communication.Events:GetChildren()) do
+				if remote:IsA('RemoteEvent') then
+					wait()
+					remote:FireServer('Travel',v.Name,1)
+				end
+			end
+		end
+	end
+end
+
+local char = game:GetService('Players').LocalPlayer.Character
+char.HumanoidRootPart.CFrame = CFrame.new(-3430.44141, 44.2530136, -2452.42285, 0.883494794, 7.65017845e-08, 0.46844101, -8.77911006e-08, 1, 2.26537877e-09, -0.46844101, -4.3126402e-08, 0.883494794)
+wait(1)
+char.HumanoidRootPart.CFrame = CFrame.new(-2950.22607, 204.599518, -2907.30005, 0.999963462, 7.67001609e-08, 0.00855069607, -7.70832216e-08, 1, 4.44685782e-08, -0.00855069607, -4.51260682e-08, 0.999963462)
+wait(1)
+char.HumanoidRootPart.CFrame = CFrame.new(-2550.71313, 113.704483, -3623.34351, -0.778264284, 5.42547163e-09, 0.62793684, 2.04448902e-08, 1, 1.66992233e-08, -0.62793684, 2.58345096e-08, -0.778264284)
+wait(1)
+char.HumanoidRootPart.CFrame = CFrame.new(-3507.6438, 80.3750153, -4022.34888, 0.379580319, 1.27902196e-08, -0.925158799, -1.71434689e-08, 1, 6.79115475e-09, 0.925158799, 1.32826425e-08, 0.379580319)
+wait(1)
+char.HumanoidRootPart.CFrame = CFrame.new(-3338.0708, 16.751152, -1470.83215, -0.16513826, 3.79093414e-08, -0.986270428, -5.00341564e-08, 1, 4.68146411e-08, 0.986270428, 5.70780969e-08, -0.16513826)
+wait(1)
+char.HumanoidRootPart.CFrame = CFrame.new(-2977.01318, 40.1937637, -731.714722, -0.542892992, -2.61433026e-08, 0.839801908, 4.09852881e-08, 1, 5.76254102e-08, -0.839801908, 6.57039507e-08, -0.542892992)
+wait(1)
+char.HumanoidRootPart.CFrame = CFrame.new(-2161.30713, 127.282799, -1204.54541, -0.924521983, 3.92842381e-08, -0.381128699, 4.23767723e-08, 1, 2.7807065e-10, 0.381128699, -1.58939208e-08, -0.924521983)
+wait(1)
+char.HumanoidRootPart.CFrame = CFrame.new(-2210.2002, 254.156525, -1848.53821, 0.789962888, -5.38499698e-08, 0.61315465, -2.25668639e-08, 1, 1.16898654e-07, -0.61315465, -1.06182576e-07, 0.789962888)
+
+
+Title.Text = "Status: Preparing..."
+spawn(function()
+	game:GetService("VirtualUser"):CaptureController()
+	game:GetService("VirtualUser"):SetKeyDown('1')
+	game:GetService("VirtualUser"):SetKeyUp('1')
+	game:GetService('Players').LocalPlayer.Character:FindFirstChild('Head'):FindFirstChild('Overhead'):Destroy()
+end)
+
+
+wait(1)
+
+
+Title.Text = "Status: Starting Farm..."
+local char = game:GetService('Players').LocalPlayer.Character
+
+local function findmoon()
+
+	local char = game:GetService('Players').LocalPlayer.Character
+	local function breakrock(rockv)
+		for _,rem in pairs(game:GetService("ReplicatedStorage").Communication.Events:GetChildren()) do
+			wait()
+			if rem:IsA('RemoteEvent') then
+				rem:FireServer('Engage', rockv)
+			end
+		end
+
+	end
+	
+	for i,v in pairs(game:GetService('Workspace'):GetDescendants()) do
+			if v:IsA('MeshPart') and v.Name:match('Gems') and v.Parent.Name:match('Moonstone') and v.Name:match('Gems') and v.Parent.Name ~= 'Rock' and v.Parent.Name ~= 'Rocks' and v.Parent.Name ~= 'Rocket' and v.Parent.Name ~= 'Model' and v.Parent.Name ~= 'Stone' and v.Parent.Name ~= 'hubertsSnowman'  then   
+				print(v.Parent.Name)
+				
+				pcall(function()
+					spawn(function()
+						repeat wait()
+							local char = game:GetService('Players').LocalPlayer.Character
+							char.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0,3,0)
+						until 
+							v == nil or v.Parent == nil	
+					end)
+
+					repeat wait()				
+						breakrock(v.Parent)
+					until 
+						v == nil or v.Parent == nil
+				end)
+			end
+	end
+
+end	
+
+
+	Title.Text = "Status: Fail Safe..."
+	wait(2)
+	Title.Text = "Status: Farming"
+    findmoon()
+
+	Title.Text = "Status: Serverhopping"
+		
+		local PlaceID = game.PlaceId
+		local AllIDs = {}
+		local foundAnything = ""
+		local actualHour = os.date("!*t").hour
+		local Deleted = false
+		local File = pcall(function()
+			AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
+		end)
+		if not File then
+			table.insert(AllIDs, actualHour)
+			writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+		end
+		function TPReturner()
+			local Site;
+			if foundAnything == "" then
+				Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+			else
+				Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+			end
+			local ID = ""
+			if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+				foundAnything = Site.nextPageCursor
+			end
+			local num = 0;
+			for i,v in pairs(Site.data) do
+				local Possible = true
+				ID = tostring(v.id)
+				if tonumber(v.maxPlayers) > tonumber(v.playing) then
+					for _,Existing in pairs(AllIDs) do
+						if num ~= 0 then
+							if ID == tostring(Existing) then
+								Possible = false
+							end
+						else
+							if tonumber(actualHour) ~= tonumber(Existing) then
+								local delFile = pcall(function()
+									delfile("NotSameServers.json")
+									AllIDs = {}
+									table.insert(AllIDs, actualHour)
+								end)
+							end
+						end
+						num = num + 1
+					end
+					if Possible == true then
+						table.insert(AllIDs, ID)
+						wait()
+						pcall(function()
+							writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+							wait()
+							game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+						end)
+						wait(4)
+					end
+				end
+			end
+		end
+
+		function Teleport()
+			while wait() do
+				pcall(function()
+					TPReturner()
+					if foundAnything ~= "" then
+						TPReturner()
+					end
+				end)
+			end
+		end
+
+		Teleport()
+
+
+
+
